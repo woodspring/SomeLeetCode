@@ -10,17 +10,17 @@ public class LLNode<V> {
 	}
 	
 	public void setValue( V value) {
-		this.value = value;
+		value = value;
 	}
 	public V value() {
-		return this.value;
+		return value;
 	}
 	
 	public void setNext( LLNode nextNode) {
-		this.next = nextNode;
+		next = nextNode;
 	}
 	public LLNode next() {
-		return this.next;
+		return next;
 	}
 	
 	public void setPrevious( LLNode previousNode) {
@@ -33,14 +33,21 @@ public class LLNode<V> {
 		this.status = status;
 	}
 	public String status() {
-		return this.status;
+		return status;
 	}
 	
 	public String toString() {
+		return toString( this);
+	}
+	
+	public String toString(LLNode<V> currNode) {
 		StringBuffer strBuff = new StringBuffer();
-		if ( value != null) strBuff.append( this.value +" "+" status:"+this.status+"|");
-		if ( next != null) strBuff.append( this.next.toString());
-		
+		if (currNode == null) {
+			strBuff.append("null||");
+		} else {
+			if ( currNode.value() != null) strBuff.append( currNode.value() +" "+" status:"+currNode.status()+"|");
+			if ( currNode.next() != null) strBuff.append( currNode.toString(currNode.next()));
+		}
 		return strBuff.toString();
 	}
 
