@@ -100,4 +100,43 @@ public class TNodeService {// implements LeetCodeService {
 //
 //		}
 //	}
+	public String findAllLeaves() {
+		ArrayList<ArrayList<Integer>> theList = findLeaves( head); 
+		StringBuffer strBuf = new StringBuffer();
+		int l1=0, l2=0;
+		for ( ArrayList<Integer> item : theList) {
+			l2 =0;
+			strBuf.append(" ="+l1+"{ ");
+			for (Integer item2: item) {
+				strBuf.append("  "+ l2+" ->" + item2);	
+				l2++;
+			}
+			strBuf.append("}");
+			l1++;
+		}
+		return strBuf.toString();
+	}
+	public ArrayList<ArrayList<Integer>> findLeaves( TNode<Integer> currNode) {
+		ArrayList<ArrayList<Integer>> result = new ArrayList<ArrayList<Integer>>();
+		findTNode( result, currNode);
+		return result;
+		
+	}
+	
+	private Integer findTNode(ArrayList<ArrayList<Integer>> list, TNode<Integer> currNode) {
+		if (currNode == null) return -1;
+		Integer left =  findTNode( list, currNode.getLeft());
+		Integer right = findTNode( list, currNode.getRight());
+		Integer currInd = Math.max( left,  right) +1; // can't catch it
+		logger.info( "currInd:{}, left:{}, right:{},                 currNode.value:{}", currInd, left, right, currNode.getValue());
+		if ( list.size() <= currInd) {
+			//first will hit here is leave; means currValue
+			logger.info("hit here, currInd:{}", currInd);
+			list.add( new ArrayList<Integer>());
+		}
+		list.get(currInd).add( currNode.getValue());
+		return currInd;
+		
+		
+	}
 }
