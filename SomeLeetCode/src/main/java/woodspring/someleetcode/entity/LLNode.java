@@ -1,54 +1,53 @@
 package woodspring.someleetcode.entity;
 
-public class LLNode<V> {
-	private V value = null;
-	private LLNode next = null;
-	private LLNode previous = null;
-	private String status = "NODE";
-	public LLNode( V value) {
-		this.value = value;
-	}
+
+
+public class LLNode<T> {
+	private T value = null;;
+	private LLNode<T> prev = null, next = null;
+	private String status;
 	
-	public void setValue( V value) {
-		value = value;
+	public LLNode( T value) {
+		this.value = value;
+		//left = right = null;
 	}
-	public V value() {
+
+	public T getValue() {
 		return value;
 	}
-	
-	public void setNext( LLNode nextNode) {
-		next = nextNode;
+	public T value() {
+		return this.value;
 	}
-	public LLNode next() {
+	public void setValue(T value) {
+		this.value = value;
+	}
+
+	public LLNode<T> getPrev() {
+		return prev;
+	}
+
+	public void setPrev(LLNode<T> prev) {
+		this.prev = prev;
+	}
+
+	public LLNode<T> getNext() {
 		return next;
 	}
-	
-	public void setPrevious( LLNode previousNode) {
-		this.previous = previousNode;
+	public LLNode<T> next() {
+		return this.next;
 	}
-	public LLNode previous() {
-		return this.previous;
+
+	public void setNext(LLNode<T> next) {
+		this.next = next;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+	public String status() {
+		return this.status;
 	}
 	public void setStatus(String status) {
 		this.status = status;
 	}
-	public String status() {
-		return status;
-	}
-	
-	public String toString() {
-		return toString( this);
-	}
-	
-	public String toString(LLNode<V> currNode) {
-		StringBuffer strBuff = new StringBuffer();
-		if (currNode == null) {
-			strBuff.append("null||");
-		} else {
-			if ( currNode.value() != null) strBuff.append( currNode.value() +" "+" status:"+currNode.status()+"|");
-			if ( currNode.next() != null) strBuff.append( currNode.toString(currNode.next()));
-		}
-		return strBuff.toString();
-	}
-
 }

@@ -3,7 +3,7 @@ package woodspring.someleetcode.leetcode;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import woodspring.someleetcode.exception.LeetcodeException;
+import woodspring.someleetcode.Exception.LeetcodeException;
 
 public class TicTacToe {
 
@@ -26,7 +26,7 @@ public class TicTacToe {
 		int winner =0;
 		boolean bRet = true;
 		logger.info( "row:{}, col:{}, player:{} board：{}", row, col, player, board[row][col]);
-		if ( 0 !=   board[row][col]) throw new LeetcodeException( (long) 40009);
+		if ( 0 !=   board[row][col]) throw new LeetcodeException( "40009");
 		board[row][col] = player;
 int iTest=0;		
 int i=0;
