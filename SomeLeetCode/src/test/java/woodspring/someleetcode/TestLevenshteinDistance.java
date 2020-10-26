@@ -125,6 +125,12 @@ public class TestLevenshteinDistance {
 		logger.info( "strA:{} --first findLCS----nanoTime:{}", strA, ( endTime-startTime));
 		assertEquals(8, result);
 		
+		startTime = System.nanoTime();
+		result = lcs.findLCSwithDP( strA,  strB);
+		endTime =  System.nanoTime();
+		logger.info( "strA:{} --findLCSwithDP----nanoTime:{}", strA, ( endTime-startTime));
+		assertEquals(8, result);
+		
 		
 		
 		
@@ -144,12 +150,16 @@ public class TestLevenshteinDistance {
 		assertEquals(4, result);
 		
 		
-		
-		startTime = System.nanoTime();
 		startTime = System.nanoTime();
 		result = lcs.biLCS( strA,  strB);
 		endTime =  System.nanoTime();
 		logger.info( "strA:{} --biLCS----nanoTime:{}", strA, ( endTime-startTime));
+		assertEquals(4, result);
+		
+		startTime = System.nanoTime();
+		result = lcs.findLCSwithDP( strA,  strB);
+		endTime =  System.nanoTime();
+		logger.info( "strA:{} --findLCSwithDP----nanoTime:{}", strA, ( endTime-startTime));
 		assertEquals(4, result);
 		
 		
@@ -171,15 +181,18 @@ public class TestLevenshteinDistance {
 		logger.info( "strA:{} --rewriteLCS----nanoTime:{}", strA, ( endTime-startTime));
 		assertEquals(0, result);
 		
-		
-		
-		startTime = System.nanoTime();
 		startTime = System.nanoTime();
 		result = lcs.biLCS( strA,  strB);
 		endTime =  System.nanoTime();
 		logger.info( "strA:{} --biLCS----nanoTime:{}", strA, ( endTime-startTime));
 		assertEquals(0, result);
 		
+		startTime = System.nanoTime();
+		result = lcs.findLCSwithDP( strA,  strB);
+		endTime =  System.nanoTime();
+		logger.info( "strA:{} --findLCSwithDP----nanoTime:{}", strA, ( endTime-startTime));
+		assertEquals(0, result);
+
 		
 		
 		
@@ -191,14 +204,11 @@ public class TestLevenshteinDistance {
 		logger.info( "strA:{} --second findLCS----nanoTime:{}", strA, ( endTime-startTime));
 		assertEquals(10, result);
 		
-
 		startTime = System.nanoTime();
 		result = lcs.rewiteLCS( strA,  strB);
 		endTime =  System.nanoTime();
 		logger.info( "strA:{} --rewriteLCS----nanoTime:{}", strA, ( endTime-startTime));
 		assertEquals(10, result);
-		
-		
 		
 		startTime = System.nanoTime();
 		startTime = System.nanoTime();
@@ -206,5 +216,29 @@ public class TestLevenshteinDistance {
 		endTime =  System.nanoTime();
 		logger.info( "strA:{} --biLCS----nanoTime:{}", strA, ( endTime-startTime));
 		assertEquals(10, result);
+		
+		startTime = System.nanoTime();
+		startTime = System.nanoTime();
+		result = lcs.findLCSwithDP( strA,  strB);
+		endTime =  System.nanoTime();
+		logger.info( "strA:{} --findLCSwithDP----nanoTime:{}", strA, ( endTime-startTime));
+		assertEquals(10, result);
+	}
+	
+	@Test
+	public void testLCSwithDP() {
+		LongestCommonSubsequence lcs = new LongestCommonSubsequence();
+		String strA = "Hillfinger";
+		String strB = "Hilfiger";
+		int result = lcs.findLCSwithDP(strA, strB);
+		logger.info("testLCSwithDP, ===> result:{}", result);
+		assertEquals(8, result);
+		
+		strA = "AGGTAB";
+		strB = "GXTXAYB";
+		result = lcs.findLCSwithDP( strA,  strB);
+		logger.info("testLCSwithDP, ====> result:{}", result);
+		assertEquals(4, result);
+		
 	}
 }

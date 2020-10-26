@@ -88,4 +88,34 @@ public class LongestCommonSubsequence {
 		//logger.info(" biLCS---- result:{}", retInt);
 		return retInt;
 	}
+	
+	public int findLCSwithDP(String strA, String strB) {
+		int retInt = 1;
+		int lenA = strA.length(), lenB = strB.length();
+		int[][] dp = new int[lenA+1][lenB+1];
+		for (int indA=0; indA <= lenA; indA++)
+			for (int indB=0; indB <=lenB; indB++)
+				dp[indA][indB] = -1;
+		
+		retInt = lcsWithDP( strA, strB, lenA, lenB, dp);
+		return retInt;		
+	}
+	
+	public int lcsWithDP(String strA, String strB, int posA, int posB, int[][] dp) {
+		int retInt = 0; 
+		int dist = -1;
+		if ( 0 == posA  || 0 == posB) return 0;
+		if ( dp[posA-1][posB-1] != -1) dist = dp[ posA-1 ][ posB -1]; 
+		else { 
+			if ( strA.charAt(posA-1) == strB.charAt( posB-1)) {
+				dist = lcsWithDP( strA, strB, posA-1, posB-1, dp) +1;
+			} else {
+				dist = Math.max( lcsWithDP( strA, strB, posA-1, posB, dp),  lcsWithDP( strA, strB, posA, posB-1, dp));
+			}
+			dp[posA-1][posB-1] = dist;			
+		} 
+		retInt = dist;
+		//logger.info("result:{} -> posA:{}, posB:{} ", retInt, posA, posB);
+		return retInt;
+	}
 }

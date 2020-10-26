@@ -15,6 +15,9 @@ public class BinTreeNode<T> {
 	public T getValue() {
 		return value;
 	}
+	public T value() {
+		return this.value;
+	}
 	public void setValue(T value) {
 		this.value = value;
 	}
@@ -24,10 +27,26 @@ public class BinTreeNode<T> {
 	public void setLeft(BinTreeNode<T> left) {
 		this.left = left;
 	}
+	
+	public BinTreeNode<T> left() {
+		return left;
+	}
+	public void left(BinTreeNode<T> left) {
+		this.left = left;
+	}
+	
+	
 	public BinTreeNode<T> getRight() {
 		return right;
 	}
 	public void setRight(BinTreeNode<T> right) {
+		this.right = right;
+	}
+	
+	public BinTreeNode<T> right() {
+		return right;
+	}
+	public void right(BinTreeNode<T> right) {
 		this.right = right;
 	}
 	@Override
@@ -42,7 +61,15 @@ public class BinTreeNode<T> {
 	}
 	
 	 
-	
+	public int compare( T v1, T v2) {
+		int result = 0;
+		int diff = (int)v1 - (int)v2;
+		if ( diff > 0) result = 1;
+		if ( diff < 0) result = -1;
+		
+		return result;
+		
+	}
 	
 	
 
