@@ -7,58 +7,159 @@ import org.slf4j.LoggerFactory;
 import woodspring.someleetcode.leetcode.IslandNumber;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class TestIslandNumber {
 	private static final Logger logger = LoggerFactory.getLogger( TestIslandNumber.class);
 	
 	
+//	@Test
+//	public void testIslandNumber() {
+//		IslandNumber iNum = new IslandNumber();
+//		int[][] map = { {1,1,0,0,0},
+//						{0,1,0,0,1},
+//						{0,0,0,1,1},
+//						{0,0,0,0,0},
+//						{0,0,0,0,1}
+//		};
+//		int k=5, m =5;
+//		int retInt = iNum.findIslandNumber(map,  k,  m);
+//		assertEquals( 3, retInt);
+//	}
+//	
+//	@Test
+//	public void testIslandNumber1() {
+//		IslandNumber iNum = new IslandNumber();
+//		int[][] map = { {1,1}};
+//		
+//		int k=1, m =1;
+//		int retInt = iNum.findIslandNumber(map,  k,  m);
+//		assertEquals( 1, retInt);
+//	}
+//	
+//	@Test
+//	public void testIslandNumberOnly4() {
+//		IslandNumber iNum = new IslandNumber();
+//		int[][] map = { {1,1,1,1,0},
+//						{1,1,0,1,0},
+//						{1,1,0,0,0},
+//						{0,0,0,0,0}
+//		};
+//		int k=4, m =5;
+//		int retInt = iNum.findIslandNumberOnly4(map,  k,  m);
+//		assertEquals( 1, retInt);
+//	}
+//	@Test
+//	public void testIslandNumberOnly41() {
+//		IslandNumber iNum = new IslandNumber();
+//		int[][] map = { {1,1,0,0,0},
+//						{1,1,0,0,0},
+//						{0,0,1,0,0},
+//						{0,0,0,1,1}
+//		};
+//		int k=4, m =5;
+//		int retInt = iNum.findIslandNumberOnly4(map,  k,  m);
+//		logger.info("testIslandNumberOnly41->result:{}", retInt);
+//		//assertEquals( 3, retInt);
+//	}
+	
 	@Test
-	public void testIslandNumber() {
+	public void testIslandNumberGroup() {
 		IslandNumber iNum = new IslandNumber();
-		int[][] map = { {1,1,0,0,0},
-						{0,1,0,0,1},
-						{0,0,0,1,1},
-						{0,0,0,0,0},
-						{0,0,0,0,1}
-		};
-		int k=5, m =5;
-		int retInt = iNum.findIslandNumber(map,  k,  m);
+		List<String> strList = new ArrayList<String>();
+		strList.add("11000");
+		strList.add("11000");
+		strList.add("00100");
+		strList.add("00011");
+		
+		int retInt = iNum.findGroup( strList);
+		logger.info("testIslandNumberGroup->result:{}", retInt);
 		assertEquals( 3, retInt);
 	}
-	
-	@Test
-	public void testIslandNumber1() {
-		IslandNumber iNum = new IslandNumber();
-		int[][] map = { {1,1}};
-		
-		int k=1, m =1;
-		int retInt = iNum.findIslandNumber(map,  k,  m);
-		assertEquals( 1, retInt);
-	}
-	
-	@Test
-	public void testIslandNumberOnly4() {
-		IslandNumber iNum = new IslandNumber();
-		int[][] map = { {1,1,1,1,0},
-						{1,1,0,1,0},
-						{1,1,0,0,0},
-						{0,0,0,0,0}
-		};
-		int k=4, m =5;
-		int retInt = iNum.findIslandNumberOnly4(map,  k,  m);
-		assertEquals( 1, retInt);
-	}
-	@Test
-	public void testIslandNumberOnly41() {
-		IslandNumber iNum = new IslandNumber();
-		int[][] map = { {1,1,0,0,0},
-						{1,1,0,0,0},
-						{0,0,1,0,0},
-						{0,0,0,1,1}
-		};
-		int k=4, m =5;
-		int retInt = iNum.findIslandNumberOnly4(map,  k,  m);
-		logger.info("testIslandNumberOnly41->result:{}", retInt);
-		//assertEquals( 3, retInt);
-	}
 
+	@Test
+	public void testIslandNumberGroup0() {
+		IslandNumber iNum = new IslandNumber();
+		List<String> strList = new ArrayList<String>();
+		strList.add("1100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001");
+		strList.add("1100010000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000000000000000000");
+		strList.add("0010000000000000000000000001000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000010000000");
+		strList.add("0001100000000000000000000000000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000001");
+		
+		int retInt = iNum.findGroup( strList);
+		logger.info("testIslandNumberGroup->result:{}", retInt);
+		assertEquals( 10, retInt);
+	}
+	
+	@Test
+	public void testIslandNumberGroup01() {
+		IslandNumber iNum = new IslandNumber();
+		List<String> strList = new ArrayList<String>();
+		strList.add("1100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001");
+		//strList.add("1100010000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000000000000000000");
+		//strList.add("0010000000000000000000000001000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000010000000");
+		//strList.add("0001100000000000000000000000000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000001");
+		
+		int retInt = iNum.findGroup( strList);
+		logger.info("testIslandNumberGroup->result:{}", retInt);
+		assertEquals( 2, retInt);
+	}
+	
+	@Test
+	public void testIslandNumberGroup02() {
+		IslandNumber iNum = new IslandNumber();
+		List<String> strList = new ArrayList<String>();
+		strList.add("1100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001");
+		strList.add("1100010000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000000000000000000");
+		strList.add("0010000000000000000000000001000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000010000000");
+		strList.add("000110000000000000000000000000000000000000000000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000001");
+		
+		int retInt = iNum.findGroup( strList);
+		logger.info("testIslandNumberGroup->result:{}", retInt);
+		assertEquals( -1, retInt);
+	}
+	
+	
+	@Test
+	public void testIslandNumberGroup03() {
+		IslandNumber iNum = new IslandNumber();
+		List<String> strList = new ArrayList<String>();
+		strList.add("1100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001");
+		strList.add("1100010000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000000000000000000");
+		strList.add("0010000000000000000000000001000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000010000000");
+		strList.add("0001100000000000000000000000000000000000000200000000000000000000000000000000000000000000010000000000000000000000000000000000000000000000000000001");
+		
+		int retInt = iNum.findGroup( strList);
+		logger.info("testIslandNumberGroup03->result:{}", retInt);
+		assertEquals( 10, retInt);
+	}
+	
+	@Test
+	public void testIslandNumberGroup04() {
+		IslandNumber iNum = new IslandNumber();
+		List<String> strList = new ArrayList<String>();
+		strList.add("00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000");
+		strList.add("00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000");
+		strList.add("00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000");
+		strList.add("00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000");
+		
+		int retInt = iNum.findGroup( strList);
+		logger.info("testIslandNumberGroup4->result:{}", retInt);
+		assertEquals( 0, retInt);
+	}
+	
+	@Test
+	public void testIslandNumberGroup05() {
+		IslandNumber iNum = new IslandNumber();
+		List<String> strList = new ArrayList<String>();
+		strList.add("0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000");
+		strList.add("0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000");
+		strList.add("0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000");
+		strList.add("-1000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000");
+		
+		int retInt = iNum.findGroup( strList);
+		logger.info("testIslandNumberGroup5->result:{}", retInt);
+		assertEquals( 0, retInt);
+	}
 }
