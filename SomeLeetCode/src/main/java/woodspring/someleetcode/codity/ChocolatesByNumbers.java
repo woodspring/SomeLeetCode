@@ -53,8 +53,8 @@ public class ChocolatesByNumbers {
 		byte[] baseByte = { 1, 2, 4, 8, 16, 32, 64, (byte) 128 };
 		int byteNum = (int)(N / 8);
 		int bytePos = N % 8;
-		Byte[] aten = new Byte[ byteNum + 2 ] ;
-		for (; ind < byteNum; ind++) {
+		Byte[] aten = new Byte[ byteNum + 1 ] ;
+		for (; ind < aten.length; ind++) {
 			aten[ ind] = zeroByte;
 		}
 		
@@ -76,12 +76,17 @@ public class ChocolatesByNumbers {
 			
 			byteInd = (int)(ind /8);
 			bytePosInd = ind % 8;
-			logger.info( "--ind:{}  byteInd:{} bytePosInd:{}  byteNum:{} bm-bi:{}", ind, byteInd, bytePosInd, byteNum + 2 , byteNum + 2 - byteInd);
-			result = (byte)(aten[ byteInd] & baseByte[bytePosInd]);
+			//logger.info( "--ind:{}  byteInd:{} bytePosInd:{}  byteNum:{} bm-bi:{}", ind, byteInd, bytePosInd, byteNum + 2 , byteNum + 2 - byteInd);
 			
+			try {
+			result = (byte)(aten[ byteInd] & baseByte[bytePosInd]);
+			} catch (Exception ex) {
+				logger.info( "--  in catch ex:{}  ind:{}  byteInd:{} bytePosInd:{}  byteNum:{} bm-bi:{}, aten:{}, aten size:{}", 
+						ex.getMessage(), ind, byteInd, bytePosInd, byteNum + 2 , byteNum + 2 - byteInd, aten[ byteInd], aten.length);
+			}
 			//logger.info( "after ----> eat:{} ind:{}, byteInd:{}, bytePosInd:{}, aten[ byteInd]:{} result:{} , M:{} ", retInt, ind, byteInd, bytePosInd, aten[ byteInd], result,  M);
 			if ( 0 != result) {
-				logger.info( "ind:{}, byte:Ind:{}, pos:{}, result:{}", ind, byteInd, bytePosInd, result);
+				logger.info( "  eating overlaped ind:{}, byte:Ind:{}, pos:{}, result:{}, tmpInd:{}", ind, byteInd, bytePosInd, result, tmpInd);
 				break;
 			}
 			
