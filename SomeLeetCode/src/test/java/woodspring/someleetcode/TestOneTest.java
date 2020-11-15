@@ -1,8 +1,13 @@
 package woodspring.someleetcode;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+
 
 import woodspring.someleetcode.leetcode.OneTest;
 
@@ -316,6 +321,26 @@ public class TestOneTest {
 		int input3 =17;
 		try { int[] result = oneTest.testOne( input1,  input2,  input3);
 		logger.info("{}{1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16}{}=>  result:{}", input1, input3, result); 
+		} 
+		catch (Exception e) {
+			
+			logger.info("EXCEPTION:{}", e.getMessage()); }
+		
+	}
+	
+	@Test
+	public void testOneTestLevel30() {
+		OneTest oneTest = new OneTest();
+		int input1 =Integer.MAX_VALUE -3;
+		
+
+		List<Integer> intList = new ArrayList<>();
+		for ( int ind =1; ind < 100; ind++) 
+			intList.add( ind);
+		int[] input2 = intList.stream().mapToInt(i->i).toArray();
+		int input3 =Integer.MAX_VALUE -399998;
+		try { int[] result = oneTest.testOne2( input1,  input2,  input3);
+		//logger.info("{}{1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16}{}=>  result:{}", input1, input3, result); 
 		} 
 		catch (Exception e) {
 			
