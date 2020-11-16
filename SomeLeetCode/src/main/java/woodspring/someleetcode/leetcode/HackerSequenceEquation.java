@@ -15,6 +15,8 @@ public class HackerSequenceEquation {
 
 	public List<String> findSeqEquation(List<String> numStr) {
 		List<String> retList = new ArrayList<>();
+		int[] A = new int[100];
+		List<Integer> aList = Arrays.stream( A).boxed().collect( Collectors.toList());
 		if ( numStr == null || numStr.size() < 2) return retList;
 		int numOfList = Integer.valueOf( numStr.get(0));
 		ConcurrentSkipListMap<Integer, Integer> theMap = new ConcurrentSkipListMap<>();
